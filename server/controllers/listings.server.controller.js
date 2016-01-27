@@ -61,7 +61,8 @@ exports.update = function(req, res) {
   function(err, updated_listing){
     if(err) res.status(400).send(err);
     res.json(updated_listing);
-  })
+  }
+);
 
   /* Replace the article's properties with the new properties found in req.body */
   /* save the coordinates (located in req.results if there is an address property) */
@@ -93,6 +94,7 @@ exports.list = function(req, res) {
   	}
 
   	res.json(listings);
+    
   });
 };
 
