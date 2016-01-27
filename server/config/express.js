@@ -1,10 +1,10 @@
-var path = require('path'),  
-    express = require('express'), 
+var path = require('path'),
+    express = require('express'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
-    listingsRouter = require('../routes/listings.server.routes'), 
+    listingsRouter = require('../routes/listings.server.routes'),
     getCoordinates = require('../controllers/coordinates.server.controller.js');
 
 module.exports.init = function() {
@@ -28,10 +28,8 @@ module.exports.init = function() {
   /* serve static files */
   app.use(express.static(__dirname + '/../../client'));
 
-
   /* use the listings router for requests to the api */
   app.use('/api/listings', listingsRouter);
-
 
   /* go to homepage for all routes not specified */
   app.get('/',function(req,res){
@@ -41,5 +39,6 @@ module.exports.init = function() {
   app.all('*', function(req,res){
     res.redirect('/');
   });
+
   return app;
 };  
